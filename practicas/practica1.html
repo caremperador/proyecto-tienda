@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>class list</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+      .color-rojo {
+        background-color: red;
+        color: white;
+      }
+      .color-azul {
+        background-color: blue;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+        fetch('https://fakestoreapi.com/products')
+    .then(response => response.json()) // Esto convierte la respuesta en un objeto JSON
+    .then(data => {
+        for(let product of data) {
+            // Aquí, 'product' es un objeto que representa un producto individual
+            // Puedes acceder a sus propiedades como 'product.title', 'product.price' y 'product.image'
+            
+            console.log(`Nombre del producto: ${product.title}`);
+            console.log(`Precio: ${product.price}`);
+            console.log(`URL de imagen: ${product.image}`);
+        }
+    })
+    .catch(error => console.error('Error:', error)); // Aquí se captura cualquier error que pueda ocurrir
+/* 
+      fetch("https://fakestoreapi.com/products")
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error("Error:", error)); */
+    </script>
+  </body>
+</html>
