@@ -4,40 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>class list</title>
-    <style>
-      body {
-        font-family: Arial;
-      }
-      .color-rojo {
-        background-color: red;
-        color: white;
-      }
-      .color-azul {
-        background-color: blue;
-        color: white;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <script>
-        fetch('https://fakestoreapi.com/products')
-    .then(response => response.json()) // Esto convierte la respuesta en un objeto JSON
-    .then(data => {
-        for(let product of data) {
-            // Aquí, 'product' es un objeto que representa un producto individual
-            // Puedes acceder a sus propiedades como 'product.title', 'product.price' y 'product.image'
-            
-            console.log(`Nombre del producto: ${product.title}`);
-            console.log(`Precio: ${product.price}`);
-            console.log(`URL de imagen: ${product.image}`);
-        }
-    })
-    .catch(error => console.error('Error:', error)); // Aquí se captura cualquier error que pueda ocurrir
-/* 
-      fetch("https://fakestoreapi.com/products")
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error)); */
+      // Constructor para crear objetos de tipo Producto
+      function Producto(nombre, precio, cantidad) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+      }
+
+      // Creamos un array de productos utilizando el constructor
+      let productos = [
+        new Producto("Camisa", 25, 3),
+        new Producto("Pantalon", 40, 6),
+        new Producto("Bolso", 70, 0), // Es recomendable usar un 0 en lugar de un string vacío para representar cantidad cero
+      ];
+
+      // Función que recibe un array de productos y una función de callback para ejecutar en cada producto
+      function mostrarProductos(productos, callback) {
+        productos.forEach(callback);
+      }
+
+      // Función de callback para mostrar el nombre de un producto
+      function mostrarNombre(producto) {
+        console.log(producto.nombre);
+      }
+
+      // Llamamos a la función mostrarProductos, pasando el array de productos y la función de callback mostrarNombre
+      mostrarProductos(productos, mostrarNombre);
     </script>
   </body>
 </html>
